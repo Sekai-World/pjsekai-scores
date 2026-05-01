@@ -64,11 +64,13 @@ class Drawing:
             self.style_sheet = f.read() + '\n' + style_sheet
 
     def __getitem__(self, bar: slice) -> svgwrite.Drawing:
-        bar = slice(bar.start or 0, bar.stop or int(self.score.notes[-1].bar + 1))
+        bar = slice(bar.start or 0, bar.stop or int(self.score.notes[-1].bar + 1) if self.score.notes else 0)
         sentence = DrawingSentence(self, bar)
         return sentence.svg()
 
     def svg(self) -> svgwrite.Drawing:
+        if not self.score.notes:
+            return svgwrite.Drawing()
         n_bars = math.ceil(self.score.notes[-1].bar)
 
         drawings: list[svgwrite.Drawing] = []
