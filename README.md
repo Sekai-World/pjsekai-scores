@@ -13,8 +13,9 @@ pip install sekaiworld.scores
 また、手動でビルドしてインストール：
 
 ```
-python -m build
-pip install dist/sekaiworld.scores-*.whl
+uv sync --all-groups
+uv run python -m build
+uv pip install dist/sekaiworld.scores-*.whl
 ```
 
 ## Usage
@@ -22,7 +23,7 @@ pip install dist/sekaiworld.scores-*.whl
 Project Sekai Scores には、デフォルトの起動スクリプトが含まれており、ローカルの SUS 譜面ファイルを読み込み、それを SVG ベクター画像に変換することができます。以下のコマンドを使って簡単に実行できます：
 
 ```
-python -m sekaiworld.scores <xxx.sus>
+uv run python -m sekaiworld.scores <xxx.sus>
 ```
 
 以下はパッケージとして使用して譜面画像を生成する例です：
