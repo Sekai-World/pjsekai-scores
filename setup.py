@@ -1,6 +1,5 @@
-import os
 import setuptools
 
-version = "v0.1.10"
+version = "v0.1.11"
 
 setuptools.setup(version=version)
